@@ -8,10 +8,10 @@
     </title>
     <meta name="description" content="前端知识体系，包括基础知识，源码解析， 优秀文章分享等">
     <link rel="stylesheet" href="/assets/style.3d4e16a3.css">
-    <link rel="modulepreload" href="/assets/Home.2057e101.js">
-    <link rel="modulepreload" href="/assets/app.667a2bdf.js">
-    <link rel="modulepreload" href="/assets/source_vue_vue-router.md.af202f73.lean.js">
-    <link rel="modulepreload" href="/assets/app.667a2bdf.js">
+    <link rel="modulepreload" href="/assets/Home.1f64cd0a.js">
+    <link rel="modulepreload" href="/assets/app.27eb1626.js">
+    <link rel="modulepreload" href="/assets/source_vue_vue-router.md.c71fda41.lean.js">
+    <link rel="modulepreload" href="/assets/app.27eb1626.js">
     
     
   </head>
@@ -739,7 +739,7 @@ data<span class="token punctuation">.</span>routerViewDepth <span class="token o
 <span class="token punctuation">}</span>
 </code></pre></div><p>对于<code>tag</code>不是<code>a</code>标签的情况，还要处理<code>slot</code>里面是否有<code>a</code>标签的情况，有的话把<code>data</code>附加到它身上，否则赋值在最外层上。最后返回<code>tag</code>创建的vnode：</p><div class="language-js"><pre><code><span class="token keyword">return</span> <span class="token function">h</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>tag<span class="token punctuation">,</span> data<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>$slots<span class="token punctuation">.</span>default<span class="token punctuation">)</span>
 </code></pre></div><h2 id="总结"><a class="header-anchor" href="#总结" aria-hidden="true">#</a> 总结</h2><p>到此，<code>Vue-Router</code>的源码就大致分析完了，其实里面有很多实现细节还没扣，比如怎么格式化一个<code>location</code>，怎么提取对应组件的路由钩子，滚动的处理等，但是这不影响路由变更到视图渲染的主流程。整个流程可以概括下图：</p><img src="http://blog.inoob.xyz/posts/22ad4b61/2.jpg"></div></div><footer class="page-footer" data-v-d36a7fda data-v-5a019cc9><div class="edit" data-v-5a019cc9><div class="edit-link" data-v-5a019cc9 data-v-3ae295f1><!----></div></div><div class="updated" data-v-5a019cc9><!----></div></footer><div class="next-and-prev-link" data-v-d36a7fda data-v-6683615c><div class="container" data-v-6683615c><div class="prev" data-v-6683615c><a class="link" href="/source/vue/keep-alive" data-v-6683615c><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" class="icon icon-prev" data-v-6683615c><path d="M19,11H7.4l5.3-5.3c0.4-0.4,0.4-1,0-1.4s-1-0.4-1.4,0l-7,7c-0.1,0.1-0.2,0.2-0.2,0.3c-0.1,0.2-0.1,0.5,0,0.8c0.1,0.1,0.1,0.2,0.2,0.3l7,7c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3c0.4-0.4,0.4-1,0-1.4L7.4,13H19c0.6,0,1-0.4,1-1S19.6,11,19,11z"></path></svg><span class="text" data-v-6683615c>keep-alive</span></a></div><div class="next" data-v-6683615c><!----></div></div></div><!--[--><!--]--></div></main></div><!----><!--]--></div>
-    <script>__VP_HASH_MAP__ = JSON.parse("{\"index.md\":\"fd7751cf\",\"share_books.md\":\"6c4ad730\",\"share_interview.md\":\"1ddd4c92\",\"share_website.md\":\"375cb344\",\"source_vue_component.md\":\"d0df400a\",\"source_vue_diff.md\":\"2c6dd267\",\"source_vue_event.md\":\"d57cfbef\",\"source_vue_keep-alive.md\":\"461bc631\",\"source_vue_new-vue.md\":\"88142153\",\"source_vue_reactive.md\":\"e0469c35\",\"source_vue_slot.md\":\"7d67d868\",\"source_vue_v-model.md\":\"ad8adc05\",\"source_vue_virtual-dom.md\":\"51788301\",\"source_vue_vue-router.md\":\"af202f73\",\"source_vue_watch-and-computed.md\":\"606bca90\",\"summary_es6_destruction.md\":\"3da5e8a1\",\"summary_es6_function.md\":\"a89a88a2\",\"summary_es6_let-and-const.md\":\"9bddcb78\",\"summary_es6_object.md\":\"c1e118ea\",\"summary_es6_pattern-string.md\":\"b4200bc9\",\"summary_js-advance_debounce-and-throttle.md\":\"a2ed638b\",\"summary_js-base_function-context.md\":\"382a61d5\"}")</script>
-    <script type="module" async src="/assets/app.667a2bdf.js"></script>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"index.md\":\"828d1d45\",\"share_books.md\":\"d5d7a0a7\",\"share_interview.md\":\"7da62c8e\",\"share_website.md\":\"fc7c2ebd\",\"source_vue_component.md\":\"5381fd10\",\"source_vue_diff.md\":\"1cff3419\",\"source_vue_event.md\":\"561f33f4\",\"source_vue_keep-alive.md\":\"bb407e9b\",\"source_vue_new-vue.md\":\"d4d3cab3\",\"source_vue_reactive.md\":\"6bdefd72\",\"source_vue_slot.md\":\"2b030dff\",\"source_vue_v-model.md\":\"bb2ede55\",\"source_vue_virtual-dom.md\":\"838bbf30\",\"source_vue_vue-router.md\":\"c71fda41\",\"source_vue_watch-and-computed.md\":\"70a92b8b\",\"summary_es6_destruction.md\":\"1985494d\",\"summary_es6_function.md\":\"658f5756\",\"summary_es6_let-and-const.md\":\"3e8129df\",\"summary_es6_object.md\":\"3730f0af\",\"summary_es6_pattern-string.md\":\"c260ea09\",\"summary_es6_symbol.md\":\"d7dcf431\",\"summary_js-advance_debounce-and-throttle.md\":\"7a0236d7\",\"summary_js-base_function-context.md\":\"590f9217\"}")</script>
+    <script type="module" async src="/assets/app.27eb1626.js"></script>
   </body>
 </html>
