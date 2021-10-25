@@ -1,1 +1,0 @@
-import{o as e,c as r,a as t}from"./app.6e0e14f6.js";const a='{"title":"前端","description":"","frontmatter":{},"headers":[{"level":2,"title":"前端","slug":"前端"},{"level":2,"title":"计算机","slug":"计算机"}],"relativePath":"share/books.md","lastUpdated":1633619688329}',o={},n=t('',7);o.render=function(t,a,o,p,s,h){return e(),r("div",null,[n])};export default o;export{a as __pageData};
