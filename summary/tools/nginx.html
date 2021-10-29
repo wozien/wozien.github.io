@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="generator" content="VuePress 2.0.0-beta.26">
+    <title>Nginx 速查 | Wozien's Note</title><meta name="description" content="前端知识体系，包括基础知识，源码解析，优秀文章分享等">
+    <link rel="preload" href="/assets/js/runtime~app.14648a7d.js" as="script"><link rel="preload" href="/assets/css/styles.459915e9.css" as="style"><link rel="preload" href="/assets/js/8567.b3b19fe1.js" as="script"><link rel="preload" href="/assets/js/app.87247731.js" as="script">
+    <link rel="stylesheet" href="/assets/css/styles.459915e9.css">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme-container"><!--[--><header class="navbar"><div class="toggle-sidebar-button" title="toggle sidebar" aria-expanded="false" role="button" tabindex="0"><div class="icon" aria-hidden="true"><span></span><span></span><span></span></div></div><span><a href="/" class=""><!----><span class="site-name">Wozien&#39;s Note</span></a></span><div class="navbar-links-wrapper" style=""><!--[--><!--]--><nav class="navbar-links can-hide"><!--[--><div class="navbar-links-item"><div class="dropdown-wrapper"><button class="dropdown-title" type="button" aria-label="总结"><span class="title">总结</span><span class="arrow down"></span></button><button class="mobile-dropdown-title" type="button" aria-label="总结"><span class="title">总结</span><span class="right arrow"></span></button><!--[--><ul style="display:none;" class="nav-dropdown"><!--[--><li class="dropdown-item"><a href="/summary/js-base/function-context" class="nav-link" aria-label="Javascript"><!--[--><!--]--> Javascript <!--[--><!--]--></a></li><li class="dropdown-item"><a href="/summary/tools/docker" class="nav-link" aria-label="开发工具"><!--[--><!--]--> 开发工具 <!--[--><!--]--></a></li><!--]--></ul><!--]--></div></div><div class="navbar-links-item"><a href="/source/vue/virtual-dom" class="nav-link" aria-label="源码"><!--[--><!--]--> 源码 <!--[--><!--]--></a></div><div class="navbar-links-item"><a href="/share/interview" class="nav-link" aria-label="搬运工"><!--[--><!--]--> 搬运工 <!--[--><!--]--></a></div><div class="navbar-links-item"><a class="nav-link external" href="https://github.com/wozien/fe-note" rel="noopener noreferrer" target="_blank" aria-label="GitHub"><!--[--><!--]--> GitHub <span><svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><!--[--><span class="sr-only">open in new window</span><!--]--></span><!--[--><!--]--></a></div><!--]--></nav><!--[--><!--]--><button class="toggle-dark-button" title="toggle dark mode"><svg style="" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M16 12.005a4 4 0 1 1-4 4a4.005 4.005 0 0 1 4-4m0-2a6 6 0 1 0 6 6a6 6 0 0 0-6-6z" fill="currentColor"></path><path d="M5.394 6.813l1.414-1.415l3.506 3.506L8.9 10.318z" fill="currentColor"></path><path d="M2 15.005h5v2H2z" fill="currentColor"></path><path d="M5.394 25.197L8.9 21.691l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 25.005h2v5h-2z" fill="currentColor"></path><path d="M21.687 23.106l1.414-1.415l3.506 3.506l-1.414 1.414z" fill="currentColor"></path><path d="M25 15.005h5v2h-5z" fill="currentColor"></path><path d="M21.687 8.904l3.506-3.506l1.414 1.415l-3.506 3.505z" fill="currentColor"></path><path d="M15 2.005h2v5h-2z" fill="currentColor"></path></svg><svg style="display:none;" class="icon" focusable="false" viewBox="0 0 32 32"><path d="M13.502 5.414a15.075 15.075 0 0 0 11.594 18.194a11.113 11.113 0 0 1-7.975 3.39c-.138 0-.278.005-.418 0a11.094 11.094 0 0 1-3.2-21.584M14.98 3a1.002 1.002 0 0 0-.175.016a13.096 13.096 0 0 0 1.825 25.981c.164.006.328 0 .49 0a13.072 13.072 0 0 0 10.703-5.555a1.01 1.01 0 0 0-.783-1.565A13.08 13.08 0 0 1 15.89 4.38A1.015 1.015 0 0 0 14.98 3z" fill="currentColor"></path></svg></button><form class="search-box" role="search"><input type="search" placeholder="Search" autocomplete="off" spellcheck="false" value><!----></form></div></header><!--]--><div class="sidebar-mask"></div><!--[--><aside class="sidebar"><nav class="navbar-links"><!--[--><div class="navbar-links-item"><div class="dropdown-wrapper"><button class="dropdown-title" type="button" aria-label="总结"><span class="title">总结</span><span class="arrow down"></span></button><button class="mobile-dropdown-title" type="button" aria-label="总结"><span class="title">总结</span><span class="right arrow"></span></button><!--[--><ul style="display:none;" class="nav-dropdown"><!--[--><li class="dropdown-item"><a href="/summary/js-base/function-context" class="nav-link" aria-label="Javascript"><!--[--><!--]--> Javascript <!--[--><!--]--></a></li><li class="dropdown-item"><a href="/summary/tools/docker" class="nav-link" aria-label="开发工具"><!--[--><!--]--> 开发工具 <!--[--><!--]--></a></li><!--]--></ul><!--]--></div></div><div class="navbar-links-item"><a href="/source/vue/virtual-dom" class="nav-link" aria-label="源码"><!--[--><!--]--> 源码 <!--[--><!--]--></a></div><div class="navbar-links-item"><a href="/share/interview" class="nav-link" aria-label="搬运工"><!--[--><!--]--> 搬运工 <!--[--><!--]--></a></div><div class="navbar-links-item"><a class="nav-link external" href="https://github.com/wozien/fe-note" rel="noopener noreferrer" target="_blank" aria-label="GitHub"><!--[--><!--]--> GitHub <span><svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg><!--[--><span class="sr-only">open in new window</span><!--]--></span><!--[--><!--]--></a></div><!--]--></nav><!--[--><!--]--><ul class="sidebar-links"><!--[--><!--[--><p class="sidebar-heading sidebar-item active">效能工具</p><ul class=""><li><!--[--><a href="/summary/tools/docker.html" class="nav-link sidebar-item" aria-label="Docker"><!--[--><!--]--> Docker <!--[--><!--]--></a><!----><!--]--></li><li><!--[--><a href="/summary/tools/git.html" class="nav-link sidebar-item" aria-label="Git 速查"><!--[--><!--]--> Git 速查 <!--[--><!--]--></a><!----><!--]--></li><li><!--[--><a aria-current="page" href="/summary/tools/nginx.html" class="router-link-active router-link-exact-active nav-link router-link-active sidebar-item active" aria-label="Nginx 速查"><!--[--><!--]--> Nginx 速查 <!--[--><!--]--></a><ul class="sidebar-sub-items"><li><!--[--><a aria-current="page" href="/summary/tools/nginx.html#常用命令" class="router-link-active router-link-exact-active nav-link sidebar-item" aria-label="常用命令"><!--[--><!--]--> 常用命令 <!--[--><!--]--></a><!----><!--]--></li><li><!--[--><a aria-current="page" href="/summary/tools/nginx.html#常用配置" class="router-link-active router-link-exact-active nav-link sidebar-item" aria-label="常用配置"><!--[--><!--]--> 常用配置 <!--[--><!--]--></a><!----><!--]--></li><li><!--[--><a aria-current="page" href="/summary/tools/nginx.html#匹配规则" class="router-link-active router-link-exact-active nav-link sidebar-item" aria-label="匹配规则"><!--[--><!--]--> 匹配规则 <!--[--><!--]--></a><!----><!--]--></li><li><!--[--><a aria-current="page" href="/summary/tools/nginx.html#常见问题" class="router-link-active router-link-exact-active nav-link sidebar-item" aria-label="常见问题"><!--[--><!--]--> 常见问题 <!--[--><!--]--></a><!----><!--]--></li></ul><!--]--></li><li><!--[--><a href="/summary/tools/regexp.html" class="nav-link sidebar-item" aria-label="正则表达式"><!--[--><!--]--> 正则表达式 <!--[--><!--]--></a><!----><!--]--></li></ul><!--]--><!--]--></ul><!--[--><!--]--></aside><!--]--><!--[--><main class="page"><!--[--><!--]--><div class="theme-default-content"><!--[--><h1 id="nginx-速查" tabindex="-1"><a class="header-anchor" href="#nginx-速查" aria-hidden="true">#</a> Nginx 速查</h1><p>Nginx是一款轻量级的HTTP服务器，采用事件驱动的异步非阻塞处理方式框架，这让其具有极好的IO性能，时常用于服务端的反向代理和负载均衡。</p><h2 id="常用命令" tabindex="-1"><a class="header-anchor" href="#常用命令" aria-hidden="true">#</a> 常用命令</h2><h3 id="柔和重启" tabindex="-1"><a class="header-anchor" href="#柔和重启" aria-hidden="true">#</a> 柔和重启</h3><div class="language-bash ext-sh line-numbers-mode"><pre class="language-bash"><code>nginx -s reload
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br></div></div><h3 id="配置文件检查" tabindex="-1"><a class="header-anchor" href="#配置文件检查" aria-hidden="true">#</a> 配置文件检查</h3><div class="language-bash ext-sh line-numbers-mode"><pre class="language-bash"><code>nginx -t
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br></div></div><h2 id="常用配置" tabindex="-1"><a class="header-anchor" href="#常用配置" aria-hidden="true">#</a> 常用配置</h2><h3 id="反向代理" tabindex="-1"><a class="header-anchor" href="#反向代理" aria-hidden="true">#</a> 反向代理</h3><div class="language-bash ext-sh line-numbers-mode"><pre class="language-bash"><code>server <span class="token punctuation">{</span>  
+  listen <span class="token number">80</span><span class="token punctuation">;</span>                                                         
+  server_name localhost<span class="token punctuation">;</span>                                               
+  client_max_body_size 1024M<span class="token punctuation">;</span>
+
+  location / <span class="token punctuation">{</span>
+    proxy_pass http://localhost:8080<span class="token punctuation">;</span>
+    proxy_set_header Host <span class="token variable">$host</span><span class="token builtin class-name">:</span><span class="token variable">$server_port</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h3 id="负载均衡" tabindex="-1"><a class="header-anchor" href="#负载均衡" aria-hidden="true">#</a> 负载均衡</h3><div class="language-bash ext-sh line-numbers-mode"><pre class="language-bash"><code>upstream <span class="token builtin class-name">test</span> <span class="token punctuation">{</span>
+  server localhost:8080<span class="token punctuation">;</span>
+  server localhost:8081<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+server <span class="token punctuation">{</span>
+  listen <span class="token number">81</span><span class="token punctuation">;</span>                                                         
+  server_name localhost<span class="token punctuation">;</span>                                               
+  client_max_body_size 1024M<span class="token punctuation">;</span>
+
+  location / <span class="token punctuation">{</span>
+    proxy_pass http://test<span class="token punctuation">;</span>
+    proxy_set_header Host <span class="token variable">$host</span><span class="token builtin class-name">:</span><span class="token variable">$server_port</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><h3 id="http服务器" tabindex="-1"><a class="header-anchor" href="#http服务器" aria-hidden="true">#</a> http服务器</h3><div class="language-bash ext-sh line-numbers-mode"><pre class="language-bash"><code>server <span class="token punctuation">{</span>
+  listen <span class="token number">80</span><span class="token punctuation">;</span>                                                         
+  server_name localhost<span class="token punctuation">;</span>                                               
+  client_max_body_size 1024M<span class="token punctuation">;</span>
+
+  location / <span class="token punctuation">{</span>
+    root e:<span class="token punctuation">\</span>wwwroot<span class="token punctuation">;</span>
+    index index.html<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h3 id="动静分离" tabindex="-1"><a class="header-anchor" href="#动静分离" aria-hidden="true">#</a> 动静分离</h3><div class="language-bash ext-sh line-numbers-mode"><pre class="language-bash"><code>upstream test<span class="token punctuation">{</span>  
+  server localhost:8080<span class="token punctuation">;</span>  
+  server localhost:8081<span class="token punctuation">;</span>  
+<span class="token punctuation">}</span>   
+
+server <span class="token punctuation">{</span>  
+  listen <span class="token number">80</span><span class="token punctuation">;</span>  
+  server_name localhost<span class="token punctuation">;</span>  
+
+  location / <span class="token punctuation">{</span>  
+    root e:<span class="token punctuation">\</span>wwwroot<span class="token punctuation">;</span>  
+    index index.html<span class="token punctuation">;</span>  
+  <span class="token punctuation">}</span>  
+
+  --所有静态请求都由nginx处理，存放目录为html  
+  location ~ <span class="token punctuation">\</span>.<span class="token punctuation">(</span>gif<span class="token operator">|</span>jpg<span class="token operator">|</span>jpeg<span class="token operator">|</span>png<span class="token operator">|</span>bmp<span class="token operator">|</span>swf<span class="token operator">|</span>css<span class="token operator">|</span>js<span class="token punctuation">)</span>$ <span class="token punctuation">{</span>  
+    root e:<span class="token punctuation">\</span>wwwroot<span class="token punctuation">;</span>  
+  <span class="token punctuation">}</span>  
+
+  --所有动态请求都转发给tomcat处理  
+  location ~ <span class="token punctuation">\</span>.<span class="token punctuation">(</span>jsp<span class="token operator">|</span><span class="token keyword">do</span><span class="token punctuation">)</span>$ <span class="token punctuation">{</span>  
+    proxy_pass http://test<span class="token punctuation">;</span>  
+  <span class="token punctuation">}</span>  
+
+  error_page <span class="token number">500</span> <span class="token number">502</span> <span class="token number">503</span> <span class="token number">504</span> /50x.html<span class="token punctuation">;</span>  
+  location <span class="token operator">=</span> /50x.html <span class="token punctuation">{</span>  
+    root e:<span class="token punctuation">\</span>wwwroot<span class="token punctuation">;</span>  
+  <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br></div></div><h3 id="正向代理" tabindex="-1"><a class="header-anchor" href="#正向代理" aria-hidden="true">#</a> 正向代理</h3><div class="language-bash ext-sh line-numbers-mode"><pre class="language-bash"><code>resolver <span class="token number">114.114</span>.114.114 <span class="token number">8.8</span>.8.8<span class="token punctuation">;</span>
+  server <span class="token punctuation">{</span>
+    resolver_timeout 5s<span class="token punctuation">;</span>
+
+    listen <span class="token number">81</span><span class="token punctuation">;</span>
+
+    access_log e:<span class="token punctuation">\</span>wwwroot<span class="token punctuation">\</span>proxy.access.log<span class="token punctuation">;</span>
+    error_log e:<span class="token punctuation">\</span>wwwroot<span class="token punctuation">\</span>proxy.error.log<span class="token punctuation">;</span>
+
+    location / <span class="token punctuation">{</span>
+      proxy_pass http://<span class="token variable">$host</span><span class="token variable">$request_uri</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+<span class="token comment">#防盗链</span>
+location ~* <span class="token punctuation">\</span>.<span class="token punctuation">(</span>gif<span class="token operator">|</span>jpg<span class="token operator">|</span>png<span class="token punctuation">)</span>$ <span class="token punctuation">{</span>
+    <span class="token comment"># 只允许 192.168.0.1 请求资源</span>
+    valid_referers none blocked <span class="token number">192.168</span>.0.1<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$invalid_referer</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       rewrite ^/ http://<span class="token variable">$host</span>/logo.png<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><h3 id="根据文件类型设置过期时间" tabindex="-1"><a class="header-anchor" href="#根据文件类型设置过期时间" aria-hidden="true">#</a> 根据文件类型设置过期时间</h3><div class="language-bash ext-sh line-numbers-mode"><pre class="language-bash"><code>location ~.*<span class="token punctuation">\</span>.css$ <span class="token punctuation">{</span>
+    expires 1d<span class="token punctuation">;</span>
+    <span class="token builtin class-name">break</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+location ~.*<span class="token punctuation">\</span>.js$ <span class="token punctuation">{</span>
+    expires 1d<span class="token punctuation">;</span>
+    <span class="token builtin class-name">break</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+location ~ .*<span class="token punctuation">\</span>.<span class="token punctuation">(</span>gif<span class="token operator">|</span>jpg<span class="token operator">|</span>jpeg<span class="token operator">|</span>png<span class="token operator">|</span>bmp<span class="token operator">|</span>swf<span class="token punctuation">)</span>$ <span class="token punctuation">{</span>
+    access_log off<span class="token punctuation">;</span>
+    expires 15d<span class="token punctuation">;</span> <span class="token comment">#保存15天</span>
+    <span class="token builtin class-name">break</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><h2 id="匹配规则" tabindex="-1"><a class="header-anchor" href="#匹配规则" aria-hidden="true">#</a> 匹配规则</h2><div class="language-bash ext-sh line-numbers-mode"><pre class="language-bash"><code>location <span class="token operator">=</span> / <span class="token punctuation">{</span>
+  <span class="token comment"># 精确匹配 / ，主机名后面不能带任何字符串</span>
+  <span class="token punctuation">[</span> configuration A <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+
+location / <span class="token punctuation">{</span>
+  <span class="token comment"># 因为所有的地址都以 / 开头，所以这条规则将匹配到所有请求</span>
+  <span class="token comment"># 但是正则和最长字符串会优先匹配</span>
+  <span class="token punctuation">[</span> configuration B <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+
+location /documents/ <span class="token punctuation">{</span>
+  <span class="token comment"># 匹配任何以 /documents/ 开头的地址，匹配符合以后，还要继续往下搜索</span>
+  <span class="token comment"># 只有后面的正则表达式没有匹配到时，这一条才会采用这一条</span>
+  <span class="token punctuation">[</span> configuration C <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+
+location ~ /documents/Abc <span class="token punctuation">{</span>
+  <span class="token comment"># 匹配任何以 /documents/Abc 开头的地址，匹配符合以后，还要继续往下搜索</span>
+  <span class="token comment"># 只有后面的正则表达式没有匹配到时，这一条才会采用这一条</span>
+  <span class="token punctuation">[</span> configuration CC <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+
+location ^~ /images/ <span class="token punctuation">{</span>
+  <span class="token comment"># 匹配任何以 /images/ 开头的地址，匹配符合以后，停止往下搜索正则，采用这一条。</span>
+  <span class="token punctuation">[</span> configuration D <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+
+location ~* <span class="token punctuation">\</span>.<span class="token punctuation">(</span>gif<span class="token operator">|</span>jpg<span class="token operator">|</span>jpeg<span class="token punctuation">)</span>$ <span class="token punctuation">{</span>
+  <span class="token comment"># 匹配所有以 gif,jpg或jpeg 结尾的请求</span>
+  <span class="token comment"># 然而，所有请求 /images/ 下的图片会被 config D 处理，因为 ^~ 到达不了这一条正则</span>
+  <span class="token punctuation">[</span> configuration E <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+
+location /images/ <span class="token punctuation">{</span>
+  <span class="token comment"># 字符匹配到 /images/，继续往下，会发现 ^~ 存在</span>
+  <span class="token punctuation">[</span> configuration F <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+
+location /images/abc <span class="token punctuation">{</span>
+  <span class="token comment"># 最长字符匹配到 /images/abc，继续往下，会发现 ^~ 存在</span>
+  <span class="token comment"># F与G的放置顺序是没有关系的</span>
+  <span class="token punctuation">[</span> configuration G <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+
+location ~ /images/abc/ <span class="token punctuation">{</span>
+  <span class="token comment"># 只有去掉 config D 才有效：先最长匹配 config G 开头的地址，继续往下搜索，匹配到这一条正则，采用</span>
+    <span class="token punctuation">[</span> configuration H <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br></div></div><h2 id="常见问题" tabindex="-1"><a class="header-anchor" href="#常见问题" aria-hidden="true">#</a> 常见问题</h2><div class="language-bash ext-sh line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># root 和 alias的区别？</span>
+**root**
+location /i/ <span class="token punctuation">{</span>
+  root /data/w3<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+真实的路径是root指定的值加上location指定的值,即/data/w3/i/<span class="token punctuation">..</span>.
+
+**alias**
+location /i/ <span class="token punctuation">{</span>
+  <span class="token builtin class-name">alias</span> /data/w3/<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+在服务器查找的资源路径是： /data/w3/<span class="token punctuation">..</span>.
+</code></pre><div class="line-numbers"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><!--]--></div><footer class="page-meta"><!----><div class="meta-item last-updated"><span class="meta-item-label">上次更新: </span><span class="meta-item-info">2021/10/29 上午3:21:51</span></div><!----></footer><nav class="page-nav"><p class="inner"><span class="prev"> ← <a href="/summary/tools/git.html" class="nav-link" aria-label="Git 速查"><!--[--><!--]--> Git 速查 <!--[--><!--]--></a></span><span class="next"><a href="/summary/tools/regexp.html" class="nav-link" aria-label="正则表达式"><!--[--><!--]--> 正则表达式 <!--[--><!--]--></a> → </span></p></nav><!--[--><!--]--></main><!--]--></div><!----><!--]--></div>
+    <script src="/assets/js/runtime~app.14648a7d.js" defer></script><script src="/assets/js/8567.b3b19fe1.js" defer></script><script src="/assets/js/app.87247731.js" defer></script>
+  </body>
+</html>
